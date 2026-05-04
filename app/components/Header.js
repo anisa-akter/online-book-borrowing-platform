@@ -5,8 +5,7 @@ import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 
 export default function Header() {
-  const { data } = authClient.useSession();
-  const session = data?.data;
+  const { data: session } = authClient.useSession();
   const user = session?.user;
   const router = useRouter();
 

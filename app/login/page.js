@@ -20,7 +20,7 @@ export default function LoginPage() {
       const {data, error} = await authClient.signIn.email({ email, password });
       if (data) {
         alert("Login successful! Redirecting to your profile...");
-        router.push("/profile");
+        router.push("/");
       } else {
         setError(error?.message || "Invalid login credentials. Please try again.");
       }
