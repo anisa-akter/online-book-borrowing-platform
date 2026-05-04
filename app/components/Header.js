@@ -30,6 +30,13 @@ export default function Header() {
         <div className="flex items-center gap-3">
           {user ? (
             <>
+              <Link href="/profile">
+                <img
+                  src={user.image || `https://ui-avatars.com/api/?name=${user.name || user.email}`}
+                  alt="Profile"
+                  className="h-8 w-8 rounded-full border border-slate-300"
+                />
+              </Link>
               <span className="hidden sm:inline text-sm text-slate-600">Hello, {user.name || user.email}</span>
               <button onClick={handleLogout} className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700 transition">
                 Logout
