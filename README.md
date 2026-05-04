@@ -4,7 +4,7 @@ A responsive library application built with Next.js, Tailwind CSS, and BetterAut
 
 ## Live URL
 
-Live deployment link: `https://your-live-url.vercel.app` (replace with your actual deployed URL)
+Live deployment link: `https://online-book-borrowing-platform-xi.vercel.app/`
 
 ## Key Features
 
