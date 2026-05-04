@@ -5,9 +5,8 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import { authClient } from "@/lib/auth-client";
 
 export default function ProfilePage() {
-  const { data } = authClient.useSession();
-  const sessionData = data?.data;
-  const user = sessionData?.user;
+  const { data: session, isPending } = authClient.useSession();
+  const user = session?.user;
 
   return (
     <ProtectedRoute>
@@ -38,7 +37,7 @@ export default function ProfilePage() {
               </div>
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6">
                 <p className="text-sm uppercase tracking-[0.28em] text-slate-500">Account status</p>
-                <p className="mt-3 text-lg font-semibold text-slate-900">{sessionData ? "Active" : "Signed out"}</p>
+                <p className="mt-3 text-lg font-semibold text-slate-900">{session ? "Active" : "Signed out"}</p>
               </div>
             </div>
           </div>

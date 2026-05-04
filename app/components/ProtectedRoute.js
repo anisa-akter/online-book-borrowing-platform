@@ -5,8 +5,7 @@ import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 
 export default function ProtectedRoute({ children }) {
-  const { data, isPending } = authClient.useSession();
-  const session = data?.data;
+  const { data: session, isPending } = authClient.useSession();
   const router = useRouter();
 
   useEffect(() => {
