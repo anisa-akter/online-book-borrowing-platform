@@ -20,10 +20,10 @@ export default function Home() {
               Discover books across Story, Tech, and Science. Borrow online securely, manage your profile, and enjoy a modern library experience.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link href="/all-books" className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-slate-950/10 hover:bg-slate-100 transition">
+              <Link href="/all-books" className="z-10 rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-slate-950/10 hover:bg-slate-100 transition">
                 Browse Now
               </Link>
-              <Link href="/profile" className="rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/20 transition">
+              <Link href="/profile" className="z-10 rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/20 transition">
                 My Profile
               </Link>
             </div>
