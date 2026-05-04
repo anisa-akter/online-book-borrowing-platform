@@ -1,2 +1,38 @@
 @import "tailwindcss";
-@import "@heroui/styles"; 
+@import "@heroui/styles";
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: #f8fafc;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: #0f172a;
+  color: white;
+}
+ 
