@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 
 export default function BorrowButton({ bookId }) {
-  const { data } = authClient.useSession();
-  const session = data?.data;
+   const { data: session } = authClient.useSession(); 
+
   const signedIn = Boolean(session);
   const [message, setMessage] = useState("");
   const router = useRouter();

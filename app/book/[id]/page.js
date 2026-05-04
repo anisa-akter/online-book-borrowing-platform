@@ -3,8 +3,11 @@ import { books } from "@/data/books";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import BorrowButton from "@/components/BorrowButton";
 
-export default function BookDetailsPage({ params }) {
-  const book = books.find((item) => item.id === params.id);
+export default async function BookDetailsPage({ params }) {
+    const resolvedParams = await params; 
+  const bookId = resolvedParams.id;
+
+  const book = books.find((item) => item.id === bookId);
 
   if (!book) {
     return (
