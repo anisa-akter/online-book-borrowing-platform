@@ -17,12 +17,17 @@ export default function LoginPage() {
     setLoading(true);
     setError("");
     try {
-      const {data, error} = await authClient.signIn.email({ email, password });
+      const { data, error } = await authClient.signIn.email({
+        email,
+        password,
+      });
       if (data) {
         alert("Login successful! Redirecting to your profile...");
         router.push("/");
       } else {
-        setError(error?.message || "Invalid login credentials. Please try again.");
+        setError(
+          error?.message || "Invalid login credentials. Please try again.",
+        );
       }
     } catch (err) {
       setError("Login failed. Please check your email and password.");
@@ -34,20 +39,17 @@ export default function LoginPage() {
   const handleGoogleLogin = async () => {
     setError("");
     try {
-      const result = await authClient.signInSocial({
+      const { data, error } = await authClient.signIn.social({
         provider: "google",
-        callbackURL: window.location.origin,
-        errorCallbackURL: `${window.location.origin}/login`,
-        disableRedirect: false,
+        callbackURL: "/",
+        errorCallbackURL: "/login",
       });
-      if (result?.redirect && result?.url) {
-        window.location.href = result.url;
-        return;
-      }
-      if (result?.token) {
-        router.push("/");
+
+      if (error) {
+        setError(error.message || "Google login failed.");
       }
     } catch (err) {
+      console.error(err);
       setError("Google login failed. Please try again later.");
     }
   };
@@ -55,11 +57,17 @@ export default function LoginPage() {
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-md rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
-        <p className="text-sm uppercase tracking-[0.35em] text-teal-600">Welcome back</p>
-        <h1 className="mt-3 text-3xl font-bold text-slate-900">Login to your account</h1>
+        <p className="text-sm uppercase tracking-[0.35em] text-teal-600">
+          Welcome back
+        </p>
+        <h1 className="mt-3 text-3xl font-bold text-slate-900">
+          Login to your account
+        </h1>
         <form onSubmit={handleLogin} className="mt-8 space-y-5">
           <div>
-            <label className="block text-sm font-medium text-slate-700">Email</label>
+            <label className="block text-sm font-medium text-slate-700">
+              Email
+            </label>
             <input
               type="email"
               value={email}
@@ -70,7 +78,9 @@ export default function LoginPage() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700">Password</label>
+            <label className="block text-sm font-medium text-slate-700">
+              Password
+            </label>
             <input
               type="password"
               value={password}
@@ -91,7 +101,10 @@ export default function LoginPage() {
         </form>
         <div className="mt-6 flex items-center gap-3 text-sm text-slate-500">
           <span>New here?</span>
-          <Link href="/register" className="font-semibold text-slate-900 hover:text-slate-700">
+          <Link
+            href="/register"
+            className="font-semibold text-slate-900 hover:text-slate-700"
+          >
             Create an account
           </Link>
         </div>
