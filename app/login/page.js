@@ -17,11 +17,11 @@ export default function LoginPage() {
     setLoading(true);
     setError("");
     try {
-      const response = await authClient.signInEmail({ email, password });
-      if (response?.token) {
+      const {data, error} = await authClient.signIn.email({ email, password });
+      if (data) {
         router.push("/");
       } else {
-        setError("Invalid login credentials. Please try again.");
+        setError(error?.message || "Invalid login credentials. Please try again.");
       }
     } catch (err) {
       setError("Login failed. Please check your email and password.");

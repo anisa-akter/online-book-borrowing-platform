@@ -19,19 +19,19 @@ export default function RegisterPage() {
     setLoading(true);
     setError("");
     try {
-      const response = await authClient.signUpEmail({
+      const {data, error} = await authClient.signUp.email({
         name,
         email,
         password,
         image: image || undefined,
       });
-      if (response?.user) {
+      if (data) {
         router.push("/login");
       } else {
-        setError("Registration failed. Please try again.");
+        setError(error?.message || "Registration failed. Please try again.");
       }
     } catch (err) {
-      setError("Unable to register. Please check your details.");
+      setError("Something went wrong. Check your connection.");
     } finally {
       setLoading(false);
     }
